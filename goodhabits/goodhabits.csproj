@@ -105,16 +105,20 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GoalsController.cs" />
-    <Compile Include="Controllers\ResponsesController.cs" />
     <Compile Include="Controllers\SessionsController.cs" />
+    <Compile Include="Controllers\UserResponsesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603292320440_initial.cs" />
+    <Compile Include="Migrations\201603292320440_initial.Designer.cs">
+      <DependentUpon>201603292320440_initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\goodhabitsContext.cs" />
-    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\UserResponse.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,7 +132,11 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603292320440_initial.resx">
+      <DependentUpon>201603292320440_initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

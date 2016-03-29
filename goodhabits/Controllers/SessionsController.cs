@@ -25,7 +25,7 @@ namespace goodhabits.Controllers
 
         // GET: api/Sessions/5
         [ResponseType(typeof(Session))]
-        public async Task<IHttpActionResult> GetSession(string id)
+        public async Task<IHttpActionResult> GetSession(int id)
         {
             Session session = await db.Sessions.FindAsync(id);
             if (session == null)
@@ -38,7 +38,7 @@ namespace goodhabits.Controllers
 
         // PUT: api/Sessions/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutSession(string id, Session session)
+        public async Task<IHttpActionResult> PutSession(int id, Session session)
         {
             if (!ModelState.IsValid)
             {
@@ -81,29 +81,14 @@ namespace goodhabits.Controllers
             }
 
             db.Sessions.Add(session);
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (SessionExists(session.SessionId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = session.SessionId }, session);
         }
 
         // DELETE: api/Sessions/5
         [ResponseType(typeof(Session))]
-        public async Task<IHttpActionResult> DeleteSession(string id)
+        public async Task<IHttpActionResult> DeleteSession(int id)
         {
             Session session = await db.Sessions.FindAsync(id);
             if (session == null)
@@ -126,7 +111,7 @@ namespace goodhabits.Controllers
             base.Dispose(disposing);
         }
 
-        private bool SessionExists(string id)
+        private bool SessionExists(int id)
         {
             return db.Sessions.Count(e => e.SessionId == id) > 0;
         }

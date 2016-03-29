@@ -13,44 +13,44 @@ using goodhabits.Models;
 
 namespace goodhabits.Controllers
 {
-    public class ResponsesController : ApiController
+    public class UserResponsesController : ApiController
     {
         private goodhabitsContext db = new goodhabitsContext();
 
-        // GET: api/Responses
-        public IQueryable<Response> GetResponses()
+        // GET: api/UserResponses
+        public IQueryable<UserResponse> GetUserResponses()
         {
-            return db.Responses;
+            return db.UserResponses;
         }
 
-        // GET: api/Responses/5
-        [ResponseType(typeof(Response))]
-        public async Task<IHttpActionResult> GetResponse(int id)
+        // GET: api/UserResponses/5
+        [ResponseType(typeof(UserResponse))]
+        public async Task<IHttpActionResult> GetUserResponse(int id)
         {
-            Response response = await db.Responses.FindAsync(id);
-            if (response == null)
+            UserResponse userResponse = await db.UserResponses.FindAsync(id);
+            if (userResponse == null)
             {
                 return NotFound();
             }
 
-            return Ok(response);
+            return Ok(userResponse);
         }
 
-        // PUT: api/Responses/5
+        // PUT: api/UserResponses/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutResponse(int id, Response response)
+        public async Task<IHttpActionResult> PutUserResponse(int id, UserResponse userResponse)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != response.ResponseId)
+            if (id != userResponse.UserResponseId)
             {
                 return BadRequest();
             }
 
-            db.Entry(response).State = EntityState.Modified;
+            db.Entry(userResponse).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace goodhabits.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ResponseExists(id))
+                if (!UserResponseExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,35 @@ namespace goodhabits.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Responses
-        [ResponseType(typeof(Response))]
-        public async Task<IHttpActionResult> PostResponse(Response response)
+        // POST: api/UserResponses
+        [ResponseType(typeof(UserResponse))]
+        public async Task<IHttpActionResult> PostUserResponse(UserResponse userResponse)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Responses.Add(response);
+            db.UserResponses.Add(userResponse);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = response.ResponseId }, response);
+            return CreatedAtRoute("DefaultApi", new { id = userResponse.UserResponseId }, userResponse);
         }
 
-        // DELETE: api/Responses/5
-        [ResponseType(typeof(Response))]
-        public async Task<IHttpActionResult> DeleteResponse(int id)
+        // DELETE: api/UserResponses/5
+        [ResponseType(typeof(UserResponse))]
+        public async Task<IHttpActionResult> DeleteUserResponse(int id)
         {
-            Response response = await db.Responses.FindAsync(id);
-            if (response == null)
+            UserResponse userResponse = await db.UserResponses.FindAsync(id);
+            if (userResponse == null)
             {
                 return NotFound();
             }
 
-            db.Responses.Remove(response);
+            db.UserResponses.Remove(userResponse);
             await db.SaveChangesAsync();
 
-            return Ok(response);
+            return Ok(userResponse);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +111,9 @@ namespace goodhabits.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ResponseExists(int id)
+        private bool UserResponseExists(int id)
         {
-            return db.Responses.Count(e => e.ResponseId == id) > 0;
+            return db.UserResponses.Count(e => e.UserResponseId == id) > 0;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace goodhabits.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public goodhabitsContext() : base("name=goodhabitsContext")
+        public goodhabitsContext() : base("conmax")
         {
         }
 
@@ -25,6 +25,6 @@ namespace goodhabits.Models
 
 		public System.Data.Entity.DbSet<goodhabits.Models.Goal> Goals { get; set; }
 
-		public System.Data.Entity.DbSet<goodhabits.Models.Response> Responses { get; set; }
+		public System.Data.Entity.DbSet<goodhabits.Models.UserResponse> UserResponses { get; set; }
 	}
 }

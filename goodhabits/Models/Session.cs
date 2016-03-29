@@ -9,7 +9,7 @@ namespace goodhabits.Models
 {
 	public class Session
 	{
-		public string SessionId { get; set; }
+		public int SessionId { get; set; }
 		[Required]
 		public string Name { get; set; }
 		public string Description { get; set; }
@@ -17,7 +17,7 @@ namespace goodhabits.Models
 		public DateTime StartDate { get; set; }
 		[Required]
 		public DateTime EndDate { get; set; }
+
 		public int UserId { get; set; }
-		public User User { get; set; }
 	}
 }
